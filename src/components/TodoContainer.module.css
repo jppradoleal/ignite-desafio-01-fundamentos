@@ -1,0 +1,32 @@
+.todoContainer {
+    width: 60%;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.statsHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.statsHeader p {
+    color: var(--blue-400);
+    font-weight: bold;
+}
+
+.statsHeader p span {
+    color: var(--gray-200);
+    background: var(--gray-400);
+    padding: .25rem .5rem;
+    border-radius: 8px;
+    font-size: .75rem;
+}
+
+.statsHeader p + p {
+    color: var(--purple-400);
+}
