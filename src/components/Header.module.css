@@ -1,0 +1,11 @@
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12.5rem;
+    background: var(--gray-700);
+}
+
+.logo {
+    width: 7.875rem;
+}
