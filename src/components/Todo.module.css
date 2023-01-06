@@ -1,10 +1,21 @@
 .todo {
     width: 100%;
-    display: flex;
-    background: var(--gray-500);
     padding: 1rem;
-    border-radius: 8px;
+
+    display: flex;
     align-items: center;
+
+    background: var(--gray-500);
+    border-radius: 8px;
+}
+
+.todo:has(input[type="checkbox"]:is(:checked)) {
+    opacity: .5;
+}
+
+.todo:has(input[type="checkbox"]:is(:checked)) p {
+    color: var(--gray-300);
+    text-decoration: line-through;
 }
 
 .todo + .todo {
@@ -14,41 +25,52 @@
 .todo p {
     flex: 1;
     margin: 0 1rem;
+
     color: var(--gray-100);
 }
 
+.todo button {
+    background: none;
+    color: var(--gray-300);
+    border: 0;
+    line-height: 0;
+    cursor: pointer;
+
+    transition: color .2s;
+}
+
+.todo button:hover {
+    color: var(--gray-2 00);
+}
+
 .todo input[type="checkbox"] {
-    appearance: none;
     width: 1rem;
     height: 1rem;
+    
+    display: grid;    
     border: 2px solid var(--blue-400);
     border-radius: 8px;
-    display: grid;
+    
+    appearance: none;
     place-content: center;
 }
 
 .todo input[type="checkbox"]::before {
     content: "✓";
-    text-align: center;
-    font-size: .75rem;
-    font-weight: bold;
-    color: var(--gray-100);
+    
     width: calc(1rem + 2px);
     height: calc(1rem + 2px);
     transform: scale(0);
+    
+    color: var(--gray-100);
     box-shadow: inset 1rem 1rem var(--purple-400);
     border-radius: 16px;
+    
+    font-size: .75rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .todo input[type="checkbox"]:checked::before {
     transform: scale(1);
-}
-
-.todo:has(input[type="checkbox"]:is(:checked)) {
-    opacity: .5;
-}
-
-.todo:has(input[type="checkbox"]:is(:checked)) p {
-    text-decoration: line-through;
-    color: var(--gray-300);
 }
