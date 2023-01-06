@@ -1,4 +1,5 @@
 import { Trash } from 'phosphor-react'
+import { FormEvent, useState } from 'react'
 import styles from './Todo.module.css'
 
 export type TodoItem = {
@@ -9,14 +10,30 @@ export type TodoItem = {
 
 type TodoProps = {
   todo: TodoItem
+  onDeleteTodo: (id: number) => void
+  onUpdateTodo: (id: number, isCompleted: boolean) => void
 }
 
-export function Todo({ todo }: TodoProps) {
+export function Todo({ todo, onDeleteTodo, onUpdateTodo }: TodoProps) {
+  const [isCompleted, setIsCompleted] = useState(todo.isCompleted);
+
+  function handleUpdateTodo (e:React.ChangeEvent<HTMLInputElement>) {
+    const newIsCompleted = e.target.checked 
+    setIsCompleted(newIsCompleted)
+    onUpdateTodo(todo.id, newIsCompleted)
+  }
+
   return (
-    <form className={styles.todo}>
-      <input type="checkbox" checked={todo.isCompleted} />
+    <div className={styles.todo}>
+      <input
+        type="checkbox"
+        checked={isCompleted}
+        onChange={handleUpdateTodo}
+      />
       <p>{todo.text}</p>
-      <Trash size={24} />
-    </form>
+      <button onClick={() => onDeleteTodo(todo.id)}>
+        <Trash size={24} />
+      </button>
+    </div>
   )
 }
